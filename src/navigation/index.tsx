@@ -1,30 +1,46 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStaticNavigation, StaticParamList } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Platform } from 'react-native';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  createStaticNavigation,
+  StaticParamList,
+} from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Platform } from "react-native";
 
-import { Explore } from './screens/Explore';
-import { Home } from './screens/Home';
-import { NotFound } from './screens/NotFound';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
+import { HapticTab } from "@/components/HapticTab";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import TabBarBackground from "@/components/ui/TabBarBackground";
+import StartScreen from "./screens/Start";
+import TasksScreen from "./screens/Tasks";
+import AddProjectScreen from "./screens/AddProject";
+import HomeScreen from "./screens/Home";
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
     Home: {
-      screen: Home,
+      screen: HomeScreen,
       options: {
         headerShown: false,
-        tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="house.fill" color={color} />
+        ),
       },
     },
-    Explore: {
-      screen: Explore,
+    Tasks: {
+      screen: TasksScreen,
       options: {
         headerShown: false,
-        tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+        tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="paperplane.fill" color={color} />
+        ),
+      },
+    },
+    AddProject: {
+      screen: AddProjectScreen,
+      options: {
+        headerShown: false,
+        tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="paperplane.fill" color={color} />
+        ),
       },
     },
   },
@@ -32,31 +48,28 @@ const HomeTabs = createBottomTabNavigator({
     headerShown: false,
     tabBarButton: HapticTab,
     tabBarBackground: TabBarBackground,
-    tabBarStyle: Platform.select({
-      ios: {
-        // Use a transparent background on iOS to show the blur effect
-        possition: 'absolute',
-      },
-      default: {},
-    }),
+    // tabBarStyle: Platform.select({
+    //   ios: {
+    //     // Use a transparent background on iOS to show the blur effect
+    //     possition: "absolute",
+    //   },
+    //   default: {},
+    // }),
   },
 });
 
 const RootStack = createNativeStackNavigator({
   screens: {
-    HomeTabs: {
-      screen: HomeTabs,
+    StartScreen: {
+      screen: StartScreen,
       options: {
         headerShown: false,
       },
     },
-    NotFound: {
-      screen: NotFound,
+    HomeTabs: {
+      screen: HomeTabs,
       options: {
-        title: '404',
-      },
-      linking: {
-        path: '*',
+        headerShown: false,
       },
     },
   },

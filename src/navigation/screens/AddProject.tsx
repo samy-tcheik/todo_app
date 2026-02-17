@@ -1,12 +1,12 @@
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const HomeScreen: React.FC = () => {
+const AddProjectScreen: React.FC = () => {
   return (
     <SafeAreaView>
-      <Text>Home</Text>
+      <Text>Add Project</Text>
     </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default AddProjectScreen;
