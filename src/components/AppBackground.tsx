@@ -6,6 +6,7 @@ const AppBackground: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <ImageBackground
       style={styles.container}
+      contentFit="fill"
       source={require("../assets/images/app-background.png")}
     >
       {children}
@@ -16,5 +17,5 @@ const AppBackground: React.FC<PropsWithChildren> = ({ children }) => {
 export default AppBackground;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center" },
+  container: { flex: 1, width: "100%", height: "100%" },
 });

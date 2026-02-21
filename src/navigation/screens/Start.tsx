@@ -9,23 +9,27 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const StartScreen: React.FC = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <AppBackground>
-        <Image
-          style={styles.image}
-          contentFit="contain"
-          source={require("../../assets/images/start-image.png")}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Task Management & To-Do List</Text>
-          <Text style={styles.content}>
-            This productive tool is designed to help you better manage your task
-            project-wise conveniently!
-          </Text>
+    <AppBackground>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Image
+            style={styles.image}
+            contentFit="contain"
+            source={require("../../assets/images/start-image.png")}
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>Task Management & To-Do List</Text>
+            <Text style={styles.content}>
+              This productive tool is designed to help you better manage your
+              task project-wise conveniently!
+            </Text>
+          </View>
+          <StartButton onPress={() => navigation.navigate("HomeTabs")} />
         </View>
-        <StartButton onPress={() => navigation.navigate("HomeTabs")} />
-      </AppBackground>
-    </SafeAreaView>
+      </SafeAreaView>
+    </AppBackground>
   );
 };
 

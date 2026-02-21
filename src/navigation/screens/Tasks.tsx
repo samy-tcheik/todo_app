@@ -1,11 +1,14 @@
+import AppBackground from "@/components/AppBackground";
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const TasksScreen: React.FC = () => {
   return (
-    <SafeAreaView>
-      <Text>Tasks</Text>
-    </SafeAreaView>
+    <AppBackground>
+      <SafeAreaView>
+        <Text>Tasks</Text>
+      </SafeAreaView>
+    </AppBackground>
   );
 };
 

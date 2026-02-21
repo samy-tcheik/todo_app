@@ -4,15 +4,14 @@ import {
   StaticParamList,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Platform } from "react-native";
+import { View } from "react-native";
 
-import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground";
 import StartScreen from "./screens/Start";
 import TasksScreen from "./screens/Tasks";
 import AddProjectScreen from "./screens/AddProject";
 import HomeScreen from "./screens/Home";
+import { Colors } from "@/constants/Colors";
+import { Image } from "expo-image";
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
@@ -20,8 +19,11 @@ const HomeTabs = createBottomTabNavigator({
       screen: HomeScreen,
       options: {
         headerShown: false,
-        tabBarIcon: ({ color }) => (
-          <IconSymbol size={28} name="house.fill" color={color} />
+        tabBarIcon: () => (
+          <Image
+            style={{ width: 28, height: 28 }}
+            source={require("../assets/images/home-icon.png")}
+          />
         ),
       },
     },
@@ -29,8 +31,11 @@ const HomeTabs = createBottomTabNavigator({
       screen: TasksScreen,
       options: {
         headerShown: false,
-        tabBarIcon: ({ color }) => (
-          <IconSymbol size={28} name="paperplane.fill" color={color} />
+        tabBarIcon: () => (
+          <Image
+            style={{ width: 28, height: 28 }}
+            source={require("../assets/images/calendar-icon.png")}
+          />
         ),
       },
     },
@@ -38,23 +43,39 @@ const HomeTabs = createBottomTabNavigator({
       screen: AddProjectScreen,
       options: {
         headerShown: false,
-        tabBarIcon: ({ color }) => (
-          <IconSymbol size={28} name="paperplane.fill" color={color} />
+        tabBarIcon: () => (
+          <Image
+            style={{ width: 28, height: 28 }}
+            source={require("../assets/images/document-icon.png")}
+          />
+        ),
+      },
+    },
+    Profile: {
+      screen: AddProjectScreen,
+      options: {
+        headerShown: false,
+        tabBarIcon: () => (
+          <Image
+            style={{ width: 28, height: 28 }}
+            source={require("../assets/images/profile-icon.png")}
+          />
         ),
       },
     },
   },
   screenOptions: {
     headerShown: false,
-    tabBarButton: HapticTab,
-    tabBarBackground: TabBarBackground,
-    // tabBarStyle: Platform.select({
-    //   ios: {
-    //     // Use a transparent background on iOS to show the blur effect
-    //     possition: "absolute",
-    //   },
-    //   default: {},
-    // }),
+    tabBarStyle: {
+      paddingTop: 10,
+      height: 70,
+      borderTopRightRadius: 25,
+      borderTopLeftRadius: 25,
+    },
+    tabBarShowLabel: false,
+    tabBarBackground: () => (
+      <View style={{ backgroundColor: Colors.primaryLight, flex: 1 }} />
+    ),
   },
 });
 
